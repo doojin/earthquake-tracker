@@ -1,0 +1,14 @@
+{
+  "name": "earthquake-tracker-backend",
+  "version": "1.0.0",
+  "description": "backend for earthquake tracker web application",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/doojin/earthquake-tracker-backend.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/doojin/earthquake-tracker-backend/issues"
+  },
+  "homepage": "https://github.com/doojin/earthquake-tracker-backend#readme"
+}
