@@ -1,7 +1,11 @@
 {
   "parser": "@typescript-eslint/parser",
   "plugins": [
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "jest"
   ],
-  "extends": "standard"
+  "extends": "standard",
+  "env": {
+    "jest/globals": true
+  }
 }
