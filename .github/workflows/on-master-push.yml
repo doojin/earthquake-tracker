@@ -1,0 +1,7 @@
+jobs:
+  on-master-push:
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Run checks
+        uses: ./.github/actions/run-checks
