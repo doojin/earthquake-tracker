@@ -2,3 +2,4 @@ runs:
   steps:
     - name: Run checks
       run: npm run checks
+      shell: bash
