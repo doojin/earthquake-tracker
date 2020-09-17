@@ -1,4 +1,7 @@
+name: Executing checks
+description: Running project checks
 runs:
+  using: composite
   steps:
     - name: Run checks
       run: npm run checks
