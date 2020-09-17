@@ -1,1 +1,4 @@
-runs: npm run checks
+runs:
+  steps:
+    - name: Run checks
+      run: npm run checks
