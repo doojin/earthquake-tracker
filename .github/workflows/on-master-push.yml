@@ -14,5 +14,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 10
+      - name: Install dependencies
+        run: npm install
       - name: Run checks
         uses: ./.github/actions/run-checks
