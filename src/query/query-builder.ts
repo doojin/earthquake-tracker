@@ -1,4 +1,3 @@
-import { Request } from 'express'
 import { ParamsDictionary } from 'express-serve-static-core'
 import { Query } from 'usgs-earthquake-api'
 
@@ -49,16 +48,15 @@ function assignIfNotNull <T extends keyof Query>
 }
 
 export default {
-  normalize (req: Request): Query {
+  build (params: ParamsDictionary): Query {
     const query: Query = {}
-    const requestParams = req.params
 
-    assignIfNotNull(query, requestParams, 'limit', getLimit)
-    assignIfNotNull(query, requestParams, 'latitude', getLatitude)
-    assignIfNotNull(query, requestParams, 'longitude', getLongitude)
-    assignIfNotNull(query, requestParams, 'maxradiuskm', getRadiusKm)
-    assignIfNotNull(query, requestParams, 'minmagnitude', getMinMagnitude)
-    assignIfNotNull(query, requestParams, 'maxmagnitude', getMaxMagnitude)
+    assignIfNotNull(query, params, 'limit', getLimit)
+    assignIfNotNull(query, params, 'latitude', getLatitude)
+    assignIfNotNull(query, params, 'longitude', getLongitude)
+    assignIfNotNull(query, params, 'maxradiuskm', getRadiusKm)
+    assignIfNotNull(query, params, 'minmagnitude', getMinMagnitude)
+    assignIfNotNull(query, params, 'maxmagnitude', getMaxMagnitude)
 
     return query
   }
