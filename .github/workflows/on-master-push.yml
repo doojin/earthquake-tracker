@@ -1,5 +1,9 @@
+on:
+  push:
+    branches:
+      - master
 jobs:
-  on-master-push:
+  master-push:
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
