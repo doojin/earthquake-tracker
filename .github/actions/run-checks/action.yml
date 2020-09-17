@@ -1,5 +1,1 @@
-jobs:
-  run-checks:
-    steps:
-      - name: Run checks
-        run: npm run checks
+runs: npm run checks
