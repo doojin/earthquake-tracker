@@ -6,6 +6,6 @@ import apiResponseTranslator from '../translator/api-response-translator'
 export default async (req: Request, res: Response) => {
   const query = queryBuilder.build(req.query)
   const earthquakes = await earthquakeApi.query.earthquakes(query)
-  const translated = apiResponseTranslator.translate(earthquakes)
-  res.json(translated)
+  const data = apiResponseTranslator.translate(earthquakes)
+  res.json({ error: false, data })
 }
