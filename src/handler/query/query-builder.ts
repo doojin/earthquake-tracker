@@ -47,6 +47,14 @@ function getEndTime (requestQuery: RequestQuery): string {
   return requestQuery.endTime as string || null
 }
 
+function getMinDepth (requestQuery: RequestQuery): number {
+  return parseIntegerParameter(requestQuery, 'minDepth', null, -100, 1000)
+}
+
+function getMaxDepth (requestQuery: RequestQuery): number {
+  return parseIntegerParameter(requestQuery, 'maxDepth', null, -100, 1000)
+}
+
 function assignIfNotNull <T extends keyof Query>
 (query: Query, requestQuery: RequestQuery, prop: T, getter: (requestQuery: RequestQuery) => Query[T]) {
   const value = getter(requestQuery)
@@ -67,6 +75,8 @@ export default {
     assignIfNotNull(query, requestQuery, 'maxmagnitude', getMaxMagnitude)
     assignIfNotNull(query, requestQuery, 'starttime', getStartTime)
     assignIfNotNull(query, requestQuery, 'endtime', getEndTime)
+    assignIfNotNull(query, requestQuery, 'mindepth', getMinDepth)
+    assignIfNotNull(query, requestQuery, 'maxdepth', getMaxDepth)
 
     return query
   }

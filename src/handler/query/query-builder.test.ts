@@ -309,4 +309,96 @@ describe('query builder', () => {
       })
     })
   })
+
+  describe('parsing minDepth parameter', () => {
+    describe('minDepth parameter not exists in request query', () => {
+      beforeEach(() => {
+        requestQuery.minDepth = undefined
+      })
+
+      test('not adding minDepth parameter to query', () => {
+        const query = queryBuilder.build(requestQuery)
+        expect(query.mindepth).toBeUndefined()
+      })
+    })
+
+    describe('minDepth parameter is not a number', () => {
+      beforeEach(() => {
+        requestQuery.minDepth = 'notNumber'
+      })
+
+      test('not adding minDepth parameter to query', () => {
+        const query = queryBuilder.build(requestQuery)
+        expect(query.mindepth).toBeUndefined()
+      })
+    })
+
+    describe('minDepth parameter is less than -100', () => {
+      beforeEach(() => {
+        requestQuery.minDepth = '-101'
+      })
+
+      test('parameter value should be increased to -100', () => {
+        const query = queryBuilder.build(requestQuery)
+        expect(query.mindepth).toEqual(-100)
+      })
+    })
+
+    describe('minDepth parameter is greater than 1000', () => {
+      beforeEach(() => {
+        requestQuery.minDepth = '1001'
+      })
+
+      test('parameter value should be decreased to 1000', () => {
+        const query = queryBuilder.build(requestQuery)
+        expect(query.mindepth).toEqual(1000)
+      })
+    })
+  })
+
+  describe('parsing maxDepth parameter', () => {
+    describe('maxDepth parameter not exists in request query', () => {
+      beforeEach(() => {
+        requestQuery.maxDepth = undefined
+      })
+
+      test('not adding maxDepth parameter to query', () => {
+        const query = queryBuilder.build(requestQuery)
+        expect(query.maxdepth).toBeUndefined()
+      })
+    })
+
+    describe('maxDepth parameter is not a number', () => {
+      beforeEach(() => {
+        requestQuery.maxDepth = 'notNumber'
+      })
+
+      test('not adding maxDepth parameter to query', () => {
+        const query = queryBuilder.build(requestQuery)
+        expect(query.maxdepth).toBeUndefined()
+      })
+    })
+
+    describe('maxDepth parameter is less than -100', () => {
+      beforeEach(() => {
+        requestQuery.maxDepth = '-101'
+      })
+
+      test('parameter value should be increased to -100', () => {
+        const query = queryBuilder.build(requestQuery)
+        expect(query.maxdepth).toEqual(-100)
+      })
+    })
+
+    describe('maxDepth parameter is greater than 1000', () => {
+      beforeEach(() => {
+        requestQuery.maxDepth = '1001'
+      })
+
+      test('parameter value should be decreased to 1000', () => {
+        const query = queryBuilder.build(requestQuery)
+        expect(query.maxdepth).toEqual(1000)
+      })
+    })
+  })
 })
