@@ -39,6 +39,14 @@ function getMaxMagnitude (requestQuery: RequestQuery): number {
   return parseIntegerParameter(requestQuery, 'maxMagnitude')
 }
 
+function getStartTime (requestQuery: RequestQuery): string {
+  return requestQuery.startTime as string || null
+}
+
+function getEndTime (requestQuery: RequestQuery): string {
+  return requestQuery.endTime as string || null
+}
+
 function assignIfNotNull <T extends keyof Query>
 (query: Query, requestQuery: RequestQuery, prop: T, getter: (requestQuery: RequestQuery) => Query[T]) {
   const value = getter(requestQuery)
@@ -57,6 +65,8 @@ export default {
     assignIfNotNull(query, requestQuery, 'maxradiuskm', getRadiusKm)
     assignIfNotNull(query, requestQuery, 'minmagnitude', getMinMagnitude)
     assignIfNotNull(query, requestQuery, 'maxmagnitude', getMaxMagnitude)
+    assignIfNotNull(query, requestQuery, 'starttime', getStartTime)
+    assignIfNotNull(query, requestQuery, 'endtime', getEndTime)
 
     return query
   }

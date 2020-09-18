@@ -261,4 +261,52 @@ describe('query builder', () => {
       })
     })
   })
+
+  describe('parsing startTime parameter', () => {
+    describe('startTime parameter not exists in request query', () => {
+      beforeEach(() => {
+        requestQuery.startTime = undefined
+      })
+
+      test('not adding startTime parameter to query', () => {
+        const query = queryBuilder.build(requestQuery)
+        expect(query.starttime).toBeUndefined()
+      })
+    })
+
+    describe('startTime parameter exists in request query', () => {
+      beforeEach(() => {
+        requestQuery.startTime = 'notEmpty'
+      })
+
+      test('adding startTime parameter to query', () => {
+        const query = queryBuilder.build(requestQuery)
+        expect(query.starttime).toEqual('notEmpty')
+      })
+    })
+  })
+
+  describe('parsing endTime parameter', () => {
+    describe('endTime parameter not exists in request query', () => {
+      beforeEach(() => {
+        requestQuery.endTime = undefined
+      })
+
+      test('not adding endTime parameter to query', () => {
+        const query = queryBuilder.build(requestQuery)
+        expect(query.endtime).toBeUndefined()
+      })
+    })
+
+    describe('endTime parameter exists in request query', () => {
+      beforeEach(() => {
+        requestQuery.endTime = 'notEmpty'
+      })
+
+      test('adding endTime parameter to query', () => {
+        const query = queryBuilder.build(requestQuery)
+        expect(query.endtime).toEqual('notEmpty')
+      })
+    })
+  })
 })
