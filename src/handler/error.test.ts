@@ -18,7 +18,7 @@ describe('error handler', () => {
 
   describe('error is thrown during request handler execution', () => {
     beforeEach(() => {
-      reqHandler = (req: Request, res: Response, next: NextFunction) => {
+      reqHandler = () => {
         throw new Error('test error')
       }
     })
@@ -36,7 +36,7 @@ describe('error handler', () => {
 
   describe('error not thrown during request handler execution', () => {
     beforeEach(() => {
-      reqHandler = (req: Request, res: Response, next: NextFunction) => {}
+      reqHandler = () => {}
     })
 
     test('not processes any errors', async () => {
