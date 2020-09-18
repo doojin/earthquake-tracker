@@ -6,4 +6,4 @@ const app = express()
 
 app.get('/earthquakes', earthquakes)
 
-app.listen(PORT, () => console.log(`App started: http://localhost:${PORT}`))
+app.listen(PORT, () => console.log(`App started: http://localhost:${PORT}/earthquakes`))

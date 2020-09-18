@@ -5,7 +5,8 @@
   "scripts": {
     "lint": "eslint './**/*.ts'",
     "test": "jest .",
-    "checks": "npm run lint; npm test"
+    "checks": "npm run lint; npm test",
+    "start": "ts-node src/index.ts"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,7 @@
   "homepage": "https://github.com/doojin/earthquake-tracker-backend#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "ts-node": "^9.0.0",
     "usgs-earthquake-api": "^1.0.30"
   },
   "devDependencies": {
