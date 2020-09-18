@@ -5,6 +5,7 @@ import earthquakeApi from 'usgs-earthquake-api'
 
 jest.mock('usgs-earthquake-api')
 jest.mock('./query/query-builder')
+jest.mock('../translator/api-response-translator')
 
 describe('/earthquakes handler', () => {
   let req: Request
