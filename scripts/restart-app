@@ -1,0 +1,5 @@
+#!/bin/bash
+
+docker image build -t earthquake-tracker-app .
+docker container rm --force earthquake-tracker-backend || true
+docker container run --name earthquake-tracker-backend --detach --publish 80:80 --env NODE_ENV=production earthquake-tracker-app
