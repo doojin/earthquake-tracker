@@ -31,6 +31,17 @@ describe('query builder', () => {
       })
     })
 
+    describe('limit parameter is a decimal number', () => {
+      beforeEach(() => {
+        requestQuery.limit = '3.5'
+      })
+
+      test('parameter is parsed as integer number', () => {
+        const query = queryBuilder.build(requestQuery)
+        expect(query.limit).toEqual(3)
+      })
+    })
+
     describe('limit parameter is less than 1', () => {
       beforeEach(() => {
         requestQuery.limit = '0'
@@ -74,6 +85,17 @@ describe('query builder', () => {
       test('not adding latitude parameter to query', () => {
         const query = queryBuilder.build(requestQuery)
         expect(query.latitude).toBeUndefined()
+      })
+    })
+
+    describe('latitude parameter is a decimal number', () => {
+      beforeEach(() => {
+        requestQuery.latitude = '3.5'
+      })
+
+      test('parameter is parsed as decimal number', () => {
+        const query = queryBuilder.build(requestQuery)
+        expect(query.latitude).toEqual(3.5)
       })
     })
 
@@ -123,6 +145,17 @@ describe('query builder', () => {
       })
     })
 
+    describe('longitude parameter is a decimal number', () => {
+      beforeEach(() => {
+        requestQuery.longitude = '3.5'
+      })
+
+      test('parameter is parsed as decimal number', () => {
+        const query = queryBuilder.build(requestQuery)
+        expect(query.longitude).toEqual(3.5)
+      })
+    })
+
     describe('longitude parameter is less than -180', () => {
       beforeEach(() => {
         requestQuery.longitude = '-181'
@@ -166,6 +199,17 @@ describe('query builder', () => {
       test('not adding radius parameter to query', () => {
         const query = queryBuilder.build(requestQuery)
         expect(query.maxradiuskm).toBeUndefined()
+      })
+    })
+
+    describe('radius parameter is a decimal number', () => {
+      beforeEach(() => {
+        requestQuery.radius = '3.5'
+      })
+
+      test('parameter is parsed as decimal number', () => {
+        const query = queryBuilder.build(requestQuery)
+        expect(query.maxradiuskm).toEqual(3.5)
       })
     })
 
@@ -215,6 +259,17 @@ describe('query builder', () => {
       })
     })
 
+    describe('minMagnitude parameter is a decimal number', () => {
+      beforeEach(() => {
+        requestQuery.minMagnitude = '3.5'
+      })
+
+      test('parameter is parsed as decimal number', () => {
+        const query = queryBuilder.build(requestQuery)
+        expect(query.minmagnitude).toEqual(3.5)
+      })
+    })
+
     describe('minMagnitude parameter is a valid number', () => {
       beforeEach(() => {
         requestQuery.minMagnitude = '13'
@@ -247,6 +302,17 @@ describe('query builder', () => {
       test('not adding maxMagnitude parameter to query', () => {
         const query = queryBuilder.build(requestQuery)
         expect(query.maxmagnitude).toBeUndefined()
+      })
+    })
+
+    describe('maxMagnitude parameter is a decimal number', () => {
+      beforeEach(() => {
+        requestQuery.maxMagnitude = '3.5'
+      })
+
+      test('parameter is parsed as decimal number', () => {
+        const query = queryBuilder.build(requestQuery)
+        expect(query.maxmagnitude).toEqual(3.5)
       })
     })
 
@@ -333,6 +399,17 @@ describe('query builder', () => {
       })
     })
 
+    describe('minDepth parameter is a decimal number', () => {
+      beforeEach(() => {
+        requestQuery.minDepth = '3.5'
+      })
+
+      test('parameter is parsed as decimal number', () => {
+        const query = queryBuilder.build(requestQuery)
+        expect(query.mindepth).toEqual(3.5)
+      })
+    })
+
     describe('minDepth parameter is less than -100', () => {
       beforeEach(() => {
         requestQuery.minDepth = '-101'
@@ -376,6 +453,17 @@ describe('query builder', () => {
       test('not adding maxDepth parameter to query', () => {
         const query = queryBuilder.build(requestQuery)
         expect(query.maxdepth).toBeUndefined()
+      })
+    })
+
+    describe('maxDepth parameter is a decimal number', () => {
+      beforeEach(() => {
+        requestQuery.maxDepth = '3.5'
+      })
+
+      test('parameter is parsed as decimal number', () => {
+        const query = queryBuilder.build(requestQuery)
+        expect(query.maxdepth).toEqual(3.5)
       })
     })
 

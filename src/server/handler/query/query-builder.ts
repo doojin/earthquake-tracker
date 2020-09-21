@@ -1,12 +1,12 @@
 import { ParsedQs as RequestQuery } from 'qs'
 import { Query } from 'usgs-earthquake-api'
 
-function parseIntegerParameter (requestQuery: RequestQuery, param: string, defaultValue: number = null,
-  min: number = null, max: number = null) {
+function parseNumberParameter (requestQuery: RequestQuery, param: string, parseFunction: (str: string) => number,
+  defaultValue: number = null, min: number = null, max: number = null) {
   let value = defaultValue
 
   if (requestQuery[param] !== undefined) {
-    value = parseInt(requestQuery[param] as string)
+    value = parseFunction(requestQuery[param] as string)
     value = isNaN(value) ? defaultValue : value
     value = value !== null && min !== null ? Math.max(value, min) : value
     value = value !== null && max !== null ? Math.min(value, max) : value
@@ -15,28 +15,38 @@ function parseIntegerParameter (requestQuery: RequestQuery, param: string, defau
   return value
 }
 
+function parseIntegerParameter (requestQuery: RequestQuery, param: string, defaultValue: number = null,
+  min: number = null, max: number = null) {
+  return parseNumberParameter(requestQuery, param, parseInt, defaultValue, min, max)
+}
+
+function parseDecimalParameter (requestQuery: RequestQuery, param: string, defaultValue: number = null,
+  min: number = null, max: number = null) {
+  return parseNumberParameter(requestQuery, param, parseFloat, defaultValue, min, max)
+}
+
 function getLimit (requestQuery: RequestQuery): number {
   return parseIntegerParameter(requestQuery, 'limit', 100, 1, 300)
 }
 
 function getLatitude (requestQuery: RequestQuery): number {
-  return parseIntegerParameter(requestQuery, 'latitude', null, -90, 90)
+  return parseDecimalParameter(requestQuery, 'latitude', null, -90, 90)
 }
 
 function getLongitude (requestQuery: RequestQuery): number {
-  return parseIntegerParameter(requestQuery, 'longitude', null, -180, 180)
+  return parseDecimalParameter(requestQuery, 'longitude', null, -180, 180)
 }
 
 function getRadiusKm (requestQuery: RequestQuery): number {
-  return parseIntegerParameter(requestQuery, 'radius', null, 0, 20_000)
+  return parseDecimalParameter(requestQuery, 'radius', null, 0, 20_000)
 }
 
 function getMinMagnitude (requestQuery: RequestQuery): number {
-  return parseIntegerParameter(requestQuery, 'minMagnitude')
+  return parseDecimalParameter(requestQuery, 'minMagnitude')
 }
 
 function getMaxMagnitude (requestQuery: RequestQuery): number {
-  return parseIntegerParameter(requestQuery, 'maxMagnitude')
+  return parseDecimalParameter(requestQuery, 'maxMagnitude')
 }
 
 function getStartTime (requestQuery: RequestQuery): string {
@@ -48,11 +58,11 @@ function getEndTime (requestQuery: RequestQuery): string {
 }
 
 function getMinDepth (requestQuery: RequestQuery): number {
-  return parseIntegerParameter(requestQuery, 'minDepth', null, -100, 1000)
+  return parseDecimalParameter(requestQuery, 'minDepth', null, -100, 1000)
 }
 
 function getMaxDepth (requestQuery: RequestQuery): number {
-  return parseIntegerParameter(requestQuery, 'maxDepth', null, -100, 1000)
+  return parseDecimalParameter(requestQuery, 'maxDepth', null, -100, 1000)
 }
 
 function assignIfNotNull <T extends keyof Query>
