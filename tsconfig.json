@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "rootDir": "src/server",
     "outDir": "build",
     "module": "commonjs",
     "esModuleInterop": true
