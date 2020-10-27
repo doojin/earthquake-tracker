@@ -8,7 +8,7 @@
     "checks": "npm run lint; npm test",
     "start": "node build/index",
     "build": "del build; tsc",
-    "start-dev": "ts-node src/server/index.ts",
+    "start-dev": "ts-node src/index.ts",
     "dev": "npm run build; npm run start-dev"
   },
   "repository": {
