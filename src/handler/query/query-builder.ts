@@ -26,7 +26,7 @@ function parseDecimalParameter (requestQuery: RequestQuery, param: string, defau
 }
 
 function getLimit (requestQuery: RequestQuery): number {
-  return parseIntegerParameter(requestQuery, 'limit', 100, 1, 300)
+  return parseIntegerParameter(requestQuery, 'limit', 100, 1, 1000)
 }
 
 function getLatitude (requestQuery: RequestQuery): number {

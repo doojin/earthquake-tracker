@@ -53,14 +53,14 @@ describe('query builder', () => {
       })
     })
 
-    describe('limit parameter is greater than 300', () => {
+    describe('limit parameter is greater than 1000', () => {
       beforeEach(() => {
-        requestQuery.limit = '301'
+        requestQuery.limit = '1001'
       })
 
-      test('parameter value should be decreased to 300', () => {
+      test('parameter value should be decreased to 1000', () => {
         const query = queryBuilder.build(requestQuery)
-        expect(query.limit).toEqual(300)
+        expect(query.limit).toEqual(1000)
       })
     })
   })
