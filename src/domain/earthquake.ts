@@ -7,7 +7,8 @@ export class Position {
 
 export class Earthquake {
   // eslint-disable-next-line no-useless-constructor
-  constructor (public title: string,
+  constructor (public id: string,
+               public title: string,
                public position: Position,
                public magnitude: number,
                public timestamp: number) {}

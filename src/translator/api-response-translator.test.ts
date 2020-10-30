@@ -103,6 +103,7 @@ describe('api response translator', () => {
     expect(earthquakes.length).toEqual(2)
 
     expect(earthquakes[0]).toEqual({
+      id: 'ci11408890',
       title: 'M 1.3 - 10km SSW of Idyllwild, CA',
       position: new Position(-116.7776667, 33.6633333, 11.008),
       magnitude: 1.29,
@@ -110,6 +111,7 @@ describe('api response translator', () => {
     })
 
     expect(earthquakes[1]).toEqual({
+      id: 'ak01421ig3u',
       title: 'M 1.1 - 117km NW of Talkeetna, Alaska',
       position: new Position(-151.6459, 63.102, 14.1),
       magnitude: 1.1,

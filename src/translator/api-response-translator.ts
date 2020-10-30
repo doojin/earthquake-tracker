@@ -9,7 +9,7 @@ function translateCoordinates (coordinates: [number, number, number]): Position 
 function translateFeature (feature: Feature): Earthquake {
   const position = translateCoordinates(feature.geometry.coordinates)
   const { title, mag: magnitude, time: timestamp } = feature.properties
-  return new Earthquake(title, position, magnitude, timestamp)
+  return new Earthquake(feature.id, title, position, magnitude, timestamp)
 }
 
 function translate (apiResponse: QueryApiResponse): Array<Earthquake> {
