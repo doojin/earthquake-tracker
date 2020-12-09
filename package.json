@@ -6,10 +6,11 @@
     "lint": "eslint './**/*.ts'",
     "test": "jest .",
     "checks": "npm run lint; npm test",
-    "start": "node build/index",
+    "start": "node build/index &",
     "build": "del build; tsc",
     "start-dev": "ts-node src/index.ts",
-    "dev": "npm run build; npm run start-dev"
+    "dev": "npm run build; npm run start-dev",
+    "stop": "pkill eqtracker"
   },
   "repository": {
     "type": "git",
