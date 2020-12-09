@@ -6,12 +6,12 @@
     "lint": "eslint './**/*.ts'",
     "test": "jest .",
     "checks": "npm run lint; npm test",
-    "start": "node build/index &",
+    "start": "forever start build/index.js",
     "build": "del build; tsc",
     "start-dev": "ts-node src/index.ts",
     "deploy": "python3 deploy.py",
     "dev": "npm run build; npm run start-dev",
-    "stop": "pkill eqtracker"
+    "stop": "forever stop build/index.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
   "homepage": "https://github.com/doojin/earthquake-tracker-backend#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "forever": "^3.0.4",
     "usgs-earthquake-api": "^1.0.31"
   },
   "devDependencies": {

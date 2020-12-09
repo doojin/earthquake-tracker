@@ -4,8 +4,6 @@ import earthquakes from './handler/earthquakes'
 import handleErrors from './handler/error'
 import handleUi from './handler/ui'
 
-process.title = 'eqtracker'
-
 const PORT = process.env.NODE_ENV === 'production' ? 80 : 3000
 const app = express()
 
