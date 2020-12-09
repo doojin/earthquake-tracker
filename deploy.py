@@ -2,7 +2,6 @@ import os
 
 FRONTEND_REPO = 'https://github.com/doojin/earthquake-tracker-frontend'
 
-
 def run_command(description, command, **kwargs):
     print('%s...' % description)
 
@@ -12,7 +11,8 @@ def run_command(description, command, **kwargs):
         os.chdir(kwargs['dir'])
 
     print(command)
-    os.system(command)
+    if os.system(command) != 0:
+        raise ValueError('command returned non-zero code')
 
     if 'dir' in kwargs:
         os.chdir(original_dir)
