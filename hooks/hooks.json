@@ -2,6 +2,7 @@
   {
     "id": "redeploy-backend",
     "execute-command": "./hooks/redeploy-backend.sh",
+    "response-message": "test",
     "trigger-rule": {
       "and": [
         {
