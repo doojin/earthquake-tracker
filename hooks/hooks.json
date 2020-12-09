@@ -8,7 +8,7 @@
         {
           "match": {
             "type": "payload-hmac-sha1",
-            "secret": "{{ getenv 'GITHUB_SECRET' | js }}",
+            "secret": "{{ getenv GITHUB_SECRET | js }}",
             "parameter": {
               "source": "header",
               "name": "X-Hub-Signature"
