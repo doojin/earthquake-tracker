@@ -9,7 +9,7 @@
     "start": "forever start build/index.js",
     "build": "del build; tsc",
     "start-dev": "ts-node src/index.ts",
-    "start-hooks": "echo started",
+    "start-hooks": "chmod +x hooks/redeploy-backend.sh && chmod +x hooks/redeploy-frontend.sh && webhook -hooks hooks/hooks.json -verbose",
     "deploy": "python3 deploy.py",
     "dev": "npm run build; npm run start-dev",
     "stop": "forever stop build/index.js"

@@ -1,10 +1,10 @@
 [
   {
     "id": "redeploy-backend",
-    "execute-command": "redeploy-backend.py"
+    "execute-command": "./hooks/redeploy-backend.sh"
   },
   {
     "id": "redeploy-frontend",
-    "execute-command": "redeploy-frontend.py"
+    "execute-command": "./hooks/redeploy-frontend.sh"
   }
 ]
