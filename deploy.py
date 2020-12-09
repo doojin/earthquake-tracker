@@ -11,7 +11,9 @@ def run_command(description, command, **kwargs):
         os.chdir(kwargs['dir'])
 
     print(command)
-    if os.system(command) != 0:
+    code = os.system(command)
+
+    if ('ignore_errors' not in kwargs or kwargs['ignore_errors'] != True) and code != 0:
         raise ValueError('command returned non-zero code')
 
     if 'dir' in kwargs:
@@ -20,7 +22,7 @@ def run_command(description, command, **kwargs):
     print('done!\n')
 
 
-run_command('stopping the server', 'npm stop')
+run_command('stopping the server', 'npm stop', ignore_errors = True)
 run_command('pulling latest changes', 'git pull')
 run_command('installing backend dependencies', 'npm install')
 run_command('cleaning frontend directory', 'rm -rf frontend')
