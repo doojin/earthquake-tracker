@@ -1,0 +1,10 @@
+[
+  {
+    "id": "redeploy-backend",
+    "execute-command": "redeploy-backend.py"
+  },
+  {
+    "id": "redeploy-frontend",
+    "execute-command": "redeploy-frontend.py"
+  }
+]
