@@ -14,3 +14,4 @@ In production environment on port 80 and NODE_ENV=production variable:
 ```
 docker container run --name earthquake-tracker-backend --detach --publish 80:80 --env NODE_ENV=production earthquake-tracker-app
 ```
+
