@@ -7,7 +7,7 @@
         {
           "match": {
             "type": "payload-hmac-sha1",
-            "secret": "{{ getenv 'GITHUB_SECRET' }}",
+            "secret": "{{ getenv 'GITHUB_SECRET' | js }}",
             "parameter": {
               "source": "header",
               "name": "X-Hub-Signature"
@@ -37,7 +37,7 @@
         {
           "match": {
             "type": "payload-hmac-sha1",
-            "secret": "{{ getenv 'GITHUB_SECRET' }}",
+            "secret": "{{ getenv 'GITHUB_SECRET' | js }}",
             "parameter": {
               "source": "header",
               "name": "X-Hub-Signature"
