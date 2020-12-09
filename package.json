@@ -9,6 +9,7 @@
     "start": "node build/index &",
     "build": "del build; tsc",
     "start-dev": "ts-node src/index.ts",
+    "start-prod": "python3 start.py",
     "dev": "npm run build; npm run start-dev",
     "stop": "pkill eqtracker"
   },
