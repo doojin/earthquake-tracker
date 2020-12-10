@@ -3,60 +3,26 @@
     "id": "redeploy-backend",
     "execute-command": "./hooks/redeploy-backend.sh",
     "trigger-rule": {
-      "and": [
-        {
-          "match": {
-            "type": "payload-hmac-sha1",
-            "secret": "{{ getenv "GITHUB_SECRET" | js }}",
-            "parameter": {
-              "source": "header",
-              "name": "X-Hub-Signature"
-            }
-          }
+      "match": {
+        "parameter": {
+            "source": "header",
+            "name": "webhook-secret"
         },
-        {
-          "match":
-          {
-            "type": "value",
-            "value": "refs/heads/master",
-            "parameter":
-            {
-              "source": "payload",
-              "name": "ref"
-            }
-          }
-        }
-      ]
+        "secret": "{{ getenv "GITHUB_SECRET" | js }}"
+      }
     }
   },
   {
     "id": "redeploy-frontend",
     "execute-command": "./hooks/redeploy-frontend.sh",
     "trigger-rule": {
-      "and": [
-        {
-          "match": {
-            "type": "payload-hmac-sha1",
-            "secret": "{{ getenv "GITHUB_SECRET" | js }}",
-            "parameter": {
-              "source": "header",
-              "name": "X-Hub-Signature"
-            }
-          }
+      "match": {
+        "parameter": {
+            "source": "header",
+            "name": "webhook-secret"
         },
-        {
-          "match":
-          {
-            "type": "value",
-            "value": "refs/heads/main",
-            "parameter":
-            {
-              "source": "payload",
-              "name": "ref"
-            }
-          }
-        }
-      ]
+        "secret": "{{ getenv "GITHUB_SECRET" | js }}"
+      }
     }
   }
 ]
