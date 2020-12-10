@@ -2,6 +2,7 @@ import os
 
 FRONTEND_REPO = 'https://github.com/doojin/earthquake-tracker-frontend'
 
+
 def run_command(description, command, **kwargs):
     print('%s...' % description)
 
@@ -13,7 +14,7 @@ def run_command(description, command, **kwargs):
     print(command)
     code = os.system(command)
 
-    if ('ignore_errors' not in kwargs or kwargs['ignore_errors'] != True) and code != 0:
+    if ('ignore_errors' not in kwargs or kwargs['ignore_errors'] is not True) and code != 0:
         raise ValueError('command returned non-zero code')
 
     if 'dir' in kwargs:
@@ -22,7 +23,7 @@ def run_command(description, command, **kwargs):
     print('done!\n')
 
 
-run_command('stopping the server', 'npm stop', ignore_errors = True)
+run_command('stopping the server', 'npm stop', ignore_errors=True)
 run_command('pulling latest changes', 'git pull')
 run_command('installing backend dependencies', 'npm ci')
 run_command('cleaning frontend directory', 'rm -rf frontend')
