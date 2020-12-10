@@ -16,8 +16,10 @@ npm run build
 npm start
 ```
 
-Running `npm start` will start application in background. You can run: `npm stop` in order to stop an already 
+Running `npm start` will start application in background. You can run: `npm stop` in order to stop an already
 running application.
+
+Application runs on port 80 (in production mode) or port 3000 (in development mode).
 
 ## Deployment
 
