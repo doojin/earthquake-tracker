@@ -1,5 +1,9 @@
 # Earthquake tracker backend
 
+## Project status
+
+![test-lint-deploy](https://github.com/doojin/earthquake-tracker/workflows/test-lint-deploy/badge.svg)
+
 ## About
 
 Backend of the earthquake tracker project: [service](http://eqtracker.tk) to display earthquakes online.
