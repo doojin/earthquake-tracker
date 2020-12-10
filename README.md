@@ -1,16 +1,34 @@
-# earthquake-tracker-backend
+# Earthquake tracker backend
 
-Building the image from Dockerfile:
-`docker build -t earthquake-tracker-app .`
+## About
 
-Starting the container:
+Backend of the earthquake tracker project: [service](http://eqtracker.tk) to display earthquakes online.
 
-In development environment with on port 3000:
-```
-docker container run --name earthquake-tracker-backend --detach --publish 3000:3000 earthquake-tracker-app
+## Installation
+
+```sh
+npm install
+npm run build
+npm start
 ```
 
-In production environment on port 80 and NODE_ENV=production variable:
+Running `npm start` will start application in background. You can run: `npm stop` in order to stop an already 
+running application.
+
+## Deployment
+
+```sh
+npm run deploy
 ```
-docker container run --name earthquake-tracker-backend --detach --publish 80:80 --env NODE_ENV=production earthquake-tracker-app
-```
+
+This command will run a deployment script which:
+
+1. Stops an already running application
+2. Pulls latest project changes from Github
+3. Re-installs project dependencies
+4. Removes the directory containing the frontend code
+5. Clones the frontend project
+6. Installs frontend project dependencies
+7. Compiles both: frontend and backend projects
+8. Starts an application in production mode
+9. Starts webhooks which will be listening for re-deployment events fired by Github actions
