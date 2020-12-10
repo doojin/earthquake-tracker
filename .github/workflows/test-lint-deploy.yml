@@ -1,5 +1,8 @@
 name: test-lint-deploy
 
+env:
+  WEBHOOK_TOKEN: ${{ secrets.WEBHOOK_TOKEN }}
+
 on:
   push:
     branches:
