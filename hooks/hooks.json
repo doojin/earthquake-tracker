@@ -9,7 +9,7 @@
             "name": "webhook-secret"
         },
         "type": "value",
-        "secret": "{{ getenv "GITHUB_SECRET" | js }}"
+        "value": "{{ getenv "GITHUB_SECRET" | js }}"
       }
     }
   },
@@ -23,7 +23,7 @@
             "name": "webhook-secret"
         },
         "type": "value",
-        "secret": "{{ getenv "GITHUB_SECRET" | js }}"
+        "value": "{{ getenv "GITHUB_SECRET" | js }}"
       }
     }
   }
