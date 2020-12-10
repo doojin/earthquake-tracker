@@ -32,3 +32,9 @@ This command will run a deployment script which:
 7. Compiles both: frontend and backend projects
 8. Starts an application in production mode
 9. Starts webhooks which will be listening for re-deployment events fired by Github actions
+
+## Webhooks
+
+Project comes with a lightweight webhook server running on the 9000 port on the same host as main web server.
+On every master branch push, if test and lint checks are passed, the requests is sent to the webhook endpoint
+causing redeployment of backend or frontend parts of the project.
