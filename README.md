@@ -36,5 +36,9 @@ This command will run a deployment script which:
 ## Webhooks
 
 Project comes with a lightweight webhook server running on the 9000 port on the same host as main web server.
+
 On every master branch push, if test and lint checks are passed, the requests is sent to the webhook endpoint
 causing redeployment of backend or frontend parts of the project.
+
+Webhook endpoint is secured with a secret. Environment variable `GITHUB_SECRET` on the host machine is required
+for the correct execution of webhook service.
