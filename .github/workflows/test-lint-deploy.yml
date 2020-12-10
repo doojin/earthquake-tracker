@@ -12,8 +12,8 @@ jobs:
   test-lint-deploy:
     runs-on: ubuntu-latest
     steps:
-      # - name: Check out project
-      #   uses: actions/checkout@v1
+      - name: Check out project
+        uses: actions/checkout@v1
 
       # - name: Setup Node v15
       #   uses: actions/setup-node@v1
