@@ -48,3 +48,5 @@ causing redeployment of backend or frontend parts of the project.
 
 Webhook endpoint is secured with a secret. Environment variable `GITHUB_SECRET` on the host machine is required
 for the correct execution of webhook service.
+
+triggering build
